@@ -1,0 +1,9 @@
+// freshly Application Configuration - Mac 
+
+include "assets/config.fresh"
+
+object AppStageConfig config {
+}
+
+
+

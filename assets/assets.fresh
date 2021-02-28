@@ -1,0 +1,180 @@
+// freshly assets 
+
+
+include "assets/freshscene2d_assets.fresh"
+include "assets/freshgame_assets.fresh"
+
+// Fonts and textures 
+
+object FontLoaderConfigured uni05_53_8 {
+	fontMetricsFilePath "uni05_53_8.fontmap"
+}
+object TextureLoaderConfigured uni05_53_8 {
+	basePath "assets/font"
+	filePath "uni05_53_8"
+}
+
+object TextureLoaderConfigured noise {
+    clampModeU Wrap
+    clampModeV Wrap
+}
+
+class BevelTexture extends TextureLoaderConfigured {
+    clampModeU Wrap
+    clampModeV Wrap
+    filterMode Trilinear
+}
+
+object BevelTexture bevel_01 {
+}
+
+object BevelTexture bevel_02 {
+}
+
+// Sounds 
+
+// Shaders 
+
+class PostShader extends ShaderProgramLoader {
+	vertexStructure "VS_Pos2TexCoord2"
+	vertexShaderSourcePath "assets/shaders/whole_screen.vsh"
+}
+
+object PostShader copy {
+	fragmentShaderSourcePath "assets/shaders/copy.fsh"
+}
+
+object PostShader tv_post {
+	vertexShaderSourcePath "assets/shaders/tv_post.vsh"
+	fragmentShaderSourcePath "assets/shaders/tv_post.fsh"
+	passthrough {
+		uniformUpdaters [
+			object ShaderUniformUpdaterConcrete_int {
+				isObjectMemberProperty "true"
+				uniformName "milliseconds"
+				objectMemberName "shaderMilliseconds"
+			}
+			object ShaderUniformUpdaterConcrete_float {
+				uniformName "saturation"
+				objectMemberName "saturation"
+			}
+			object ShaderUniformUpdaterConcrete_vec4 {
+				uniformName "colorMultiplied"
+				objectMemberName "colorMultiplied"
+			}
+			object ShaderUniformUpdaterConcrete_float {
+				uniformName "noiseIntensity"
+				objectMemberName "noiseIntensity"
+			}
+			object ShaderUniformUpdaterConcrete_int {
+				isObjectMemberProperty "true"
+				uniformName "noiseTexture"
+				objectMemberName "textureUnit1"
+			}
+			object ShaderUniformUpdaterConcrete_vec4 {
+				uniformName "rescanColor"
+				objectMemberName "rescanColor"
+			}
+			object ShaderUniformUpdaterConcrete_float {
+				uniformName "burnIn"
+				objectMemberName "burnIn"
+			}
+			object ShaderUniformUpdaterConcrete_int {
+				isObjectMemberProperty "true"
+				uniformName "retainedTexture"
+				objectMemberName "textureUnit2"
+			}
+		]
+	}
+}
+
+object PostShader bloom_tonemap {
+	vertexShaderSourcePath "assets/shaders/whole_screen.vsh"
+	fragmentShaderSourcePath "assets/shaders/bloom_tonemap.fsh"
+
+	passthrough {
+		uniformUpdaters [
+			object ShaderUniformUpdaterConcrete_float {
+				uniformName "bloomBrightness"
+				objectMemberName "bloomBrightness"
+			}
+			object ShaderUniformUpdaterConcrete_float {
+				uniformName "bloomContrast"
+				objectMemberName "bloomContrast"
+			}
+		]
+	}
+}
+
+object ShaderProgramLoader CRT {
+	vertexStructure VS_Pos2TexCoord2
+	vertexShaderSourcePath assets/shaders/PlainVanilla.vsh
+	fragmentShaderSourcePath assets/shaders/crt.fsh
+
+	passthrough {
+		uniformUpdaters [
+			object ShaderUniformUpdaterConcrete_mat4 {
+				uniformName projectionMatrix
+				boundObject Renderer'renderer'
+				objectMemberName getProjectionMatrix
+			}
+			object ShaderUniformUpdaterConcrete_mat4 {
+				uniformName modelViewMatrix
+				boundObject Renderer'renderer'
+				objectMemberName getModelViewMatrix
+			}
+			object ShaderUniformUpdaterConcrete_mat4 {
+				uniformName textureMatrix
+				boundObject Renderer'renderer'
+				objectMemberName getTextureMatrix
+			}
+		]
+	}
+}
+
+object PostShader horizontal_blur {
+	vertexShaderSourcePath "assets/shaders/horizontal_blur.vsh"
+	fragmentShaderSourcePath "assets/shaders/horizontal_blur.fsh"
+}
+
+object PostShader vertical_blur {
+	vertexShaderSourcePath "assets/shaders/vertical_blur.vsh"
+	fragmentShaderSourcePath "assets/shaders/vertical_blur.fsh"
+}
+
+object PostShader composite {
+	vertexShaderSourcePath "assets/shaders/composite.vsh"
+	fragmentShaderSourcePath "assets/shaders/composite.fsh"
+
+	passthrough {
+		uniformUpdaters [
+			object ShaderUniformUpdaterConcrete_int {
+				isObjectMemberProperty "true"
+				uniformName "blurTexture"
+				objectMemberName "textureUnit1"
+			}
+			object ShaderUniformUpdaterConcrete_int {
+				isObjectMemberProperty "true"
+				uniformName "pixelBevelTexture"
+				objectMemberName "textureUnit2"
+			}
+			object ShaderUniformUpdaterConcrete_float {
+				uniformName "bloomIntensity"
+				objectMemberName "bloomIntensity"
+			}
+			object ShaderUniformUpdaterConcrete_float {
+				uniformName "chromaticAberration"
+				objectMemberName "chromaticAberration"
+			}
+			object ShaderUniformUpdaterConcrete_float {
+				uniformName "bevelIntensity"
+				objectMemberName "bevelIntensity"
+			}
+			object ShaderUniformUpdaterConcrete_vec2 {
+				isObjectMemberProperty "true"
+				uniformName "diffuseTextureSize"
+				objectMemberName "diffuseTextureSize"
+			}
+		]
+	}
+}

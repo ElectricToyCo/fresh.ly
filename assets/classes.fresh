@@ -1,0 +1,9 @@
+// freshly classes 
+
+class DefaultText extends TextField {
+	font "Font'uni05_53_8'"
+	fontSize "8"
+	alignment "Right"
+	color FFAA0400
+	verticalAlignment "Bottom"
+}

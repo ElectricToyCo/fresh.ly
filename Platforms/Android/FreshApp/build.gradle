@@ -1,0 +1,76 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion '29.0.2'
+    defaultConfig {
+        applicationId "co.electrictoy.freshly"
+        minSdkVersion 16
+        targetSdkVersion 26
+        versionCode 15
+        versionName '1.5.5'
+    }
+    buildTypes {
+        release {
+            ndk {
+                moduleName "freshly"
+                abiFilter "armeabi-v7a"
+                stl "gnustl_static"     // TODO: Move to c++_static
+            }
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+    }
+    sourceSets.main {
+        java.srcDirs = ['src', '../../../Fresh/Platforms/Android/src']
+        jni.srcDirs = []
+        jniLibs.srcDir 'src/main/libs'
+        assets.srcDirs = ['../../../assets']
+    }
+    task updateVer(type: Exec, description: 'Updating version file') {
+        workingDir '..'
+        commandLine './upver.sh'
+    }
+    task buildNative(type: Exec, description: 'Compile JNI source via NDK') {
+        def ndkDir = android.ndkDirectory
+        commandLine "$ndkDir/ndk-build",
+                '-C', file('src/main/jni').absolutePath,
+                '-j', Runtime.runtime.availableProcessors(),
+                'all',
+                'NDK_DEBUG=0'
+    }
+    task cleanNative(type: Exec, description: 'Clean JNI object files') {
+        def ndkDir = android.ndkDirectory
+        commandLine "$ndkDir/ndk-build",
+                '-C', file('src/main/jni').absolutePath,
+                'clean'
+    }
+
+    buildNative.dependsOn 'updateVer'
+    clean.dependsOn 'cleanNative'
+
+    tasks.withType( JavaCompile ) {
+        compileTask -> compileTask.dependsOn buildNative
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
+}
+
+dependencies {
+    implementation 'com.android.support:support-v4:28.0.0'
+}
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.2'
+    }
+}
