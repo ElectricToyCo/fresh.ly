@@ -256,10 +256,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1F2C00D925EC4B470071488B /* freshly - macOS.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "freshly - macOS.entitlements"; sourceTree = "<group>"; };
 		1F51FC1C1A3245EE008EEAA1 /* AppStage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AppStage.cpp; sourceTree = "<group>"; };
 		1F51FC1D1A3245EE008EEAA1 /* AppStage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppStage.h; sourceTree = "<group>"; };
 		1F51FC1E1A3245EE008EEAA1 /* Essentials.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Essentials.h; sourceTree = "<group>"; };
-		1F59440420E2CB0D00FAF0FD /* Family Finance - macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Family Finance - macOS.entitlements"; sourceTree = "<group>"; };
 		1F80BB941CBDBFF6006D5042 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Crashlytics.framework; path = iOS/Crashlytics.framework; sourceTree = "<group>"; };
 		1F80BB951CBDBFF6006D5042 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fabric.framework; path = iOS/Fabric.framework; sourceTree = "<group>"; };
 		1F9E825018C92E3000BF7B00 /* @73N.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "@73N.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -454,7 +454,7 @@
 		1FD08E6E20B0870A00829C8E /* macOS Resources */ = {
 			isa = PBXGroup;
 			children = (
-				1F59440420E2CB0D00FAF0FD /* Family Finance - macOS.entitlements */,
+				1F2C00D925EC4B470071488B /* freshly - macOS.entitlements */,
 				1FD08E7620B087A800829C8E /* MainMenu.xib */,
 				1FD08E6F20B0872000829C8E /* Assets-Mac.xcassets */,
 			);
