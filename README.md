@@ -1,5 +1,5 @@
 # fresh.ly
-The fresh.ly fantasy console, built on Fresh.
+The fresh.ly fantasy console, built on [Fresh](https://github.com/ElectricToyCo/Fresh).
 
 *fresh.ly* is a fantasy console inspired by [pico-8](https://www.lexaloffle.com/pico-8.php). Like pico-8, it comes to you as a game development app that you run on Windows, Mac, or Linux in order to create your own games. Like pico-8, it enables you to publish your game to any of these platforms plus iOS, Android, or a web player. Like pico-8, it is intended for small, focused, limited games. Like pico-8, your game code is written in Lua, using many of the same commands as those found in pico-8.
 
