@@ -17,7 +17,7 @@
 
 		<script>
 			goFullscreen = null;
-		
+
 			function bailout() {
 				window.location.replace( '/' );
 			}
@@ -29,12 +29,12 @@
 				document.getElementById( 'loading-message' ).style.display = 'none';
 
 				clearInterval( loadingInterval );
-			}			
+			}
 		</script>
 
 		<style>
 			body {/* display: flex; *//* flex-direction: column; */margin: 0;padding: 0;color: #f1ede5;background-color: #292827;font-family: Futura-Medium, Helvetica, sans-serif;font-size: 12pt;}
-			
+
 			a {color: #E65E5E; text-decoration: none;font-weight: bold; font-style: italic; }
 			a:hover { text-decoration: underline; }
 			a:visited { color: #E65E5E; }
@@ -53,7 +53,7 @@
 
 			canvas:fullscreen { margin: auto; max-width: 100%; width: 100%; max-height: 100%; height: auto; }
 			canvas:-webkit-full-screen { margin: auto; max-width: 100%; width: 100%; max-height: 100%; height: auto; }
-			
+
 			.button { cursor: pointer; cursor: hand; }
 
 			#start-prompt { text-align: center;position: absolute;width: 100%;left: 0;top: 10vw;z-index: 200; }
@@ -75,7 +75,7 @@
 			footer { flex-shrink: 0; margin: 0; background: #4C4139; width: 100%; padding-top: 12px; padding-bottom: 12px; text-align: center; font-size: 10pt; font-family: Futura-Medium, Gill Sans, Helvetica, sans-serif; box-shadow: 0 0px 25px rgba(0,0,0,0.5);}
 
 			footer span { white-space: nowrap; }
-			
+
 			.vignette {
 				z-index: 1;
 				pointer-events: none;
@@ -113,7 +113,7 @@
 				<div id="loading-message"><div id='loading-message-contents'>loading</div></div>
 
 				<script type="text/javascript">
-					Module = { 
+					Module = {
 						print: function(text) { console.log( text ); },
 						printErr: function(text) { console.error( text ); },
 						canvas: document.getElementById( "canvas" ),
@@ -129,7 +129,7 @@
 
 		<script>
 			// key blocker. prevent cursor keys from scrolling page while playing game.
-			
+
 			function onKeyDown_blocker(event) {
 				event = event || window.event;
 				var o = document.activeElement;
@@ -145,7 +145,7 @@
 			document.addEventListener('keydown', onKeyDown_blocker, false);
 
 			const gameShortName = 'fin';
-			console.log( gameShortName );
+			console.log( `Running fresh.ly-based game with short name "${gameShortName}".` );
 
 			const gameTitle = '@73N: KEEP. HIM. ALIVE.';
 			document.title = 'The E.T.C.: ' + gameTitle;
@@ -153,7 +153,7 @@
 
 			const subtitle = '';
 			const description = `<p>Created for <a href='https://ldjam.com/events/ludum-dare/46/a73n-keep-him-alive'>Ludum Dare Jam 46</a>, April 2020.</p>
-			<p>@73N is an o  friend of yours, a steam-powered robot fallen on hard times. Feed him the wood he needs to keep his fires going. Then build the parts he needs in order to fix himself.</p>
+			<p>@73N is an old friend of yours, a steam-powered robot fallen on hard times. Feed him the wood he needs to keep his fires going. Then build the parts he needs in order to fix himself.</p>
 
 			<p>There's just one problem. The parts he needs are complicated. And you may just find yourself building a whole factory in order to put them together.</p>
 
@@ -167,15 +167,15 @@
 			<p>Design, Code, Art, Sound, and Music by Jeff Wofford</p>`;
 
 			document.getElementsByClassName( 'game-subtitle' )[0].innerHTML = subtitle || '';
-			document.getElementsByClassName( 'game-description' )[0].innerHTML = description || '';				
-			
+			document.getElementsByClassName( 'game-description' )[0].innerHTML = description || '';
+
 			const url = 'freshly.js';
-			
+
 			// Load the game.
 			startGame = function() {
 
 				console.log( 'starting game' )
-				
+
 				const canvas = document.getElementById( 'canvas' );
 				document.getElementById( 'loading-message' ).style.display = 'block';
 
@@ -184,9 +184,9 @@
 					const canvas = document.getElementById( 'canvas' );
 					if( canvas.requestFullscreen ) { canvas.requestFullscreen(); }
 					else if( canvas.mozRequestFullScreen ) { canvas.mozRequestFullScreen(); }
-					else if( canvas.webkitRequestFullScreen ) { canvas.webkitRequestFullScreen(); }							
-					else if( canvas.msRequestFullscreen ) { canvas.msRequestFullscreen(); }							
-				}					
+					else if( canvas.webkitRequestFullScreen ) { canvas.webkitRequestFullScreen(); }
+					else if( canvas.msRequestFullscreen ) { canvas.msRequestFullscreen(); }
+				}
 
 				// Start loading cycle display
 				//
@@ -201,7 +201,7 @@
 				document.getElementById( 'game-script' ).src = url;
 			}
 
-		</script>	
+		</script>
 
 	</body>
 </html>
