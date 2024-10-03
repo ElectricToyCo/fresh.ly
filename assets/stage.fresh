@@ -1,11 +1,11 @@
-// freshly Normal Stage 
+// freshly Normal Stage
 
 object AppStage theStage {
 
 	stageDimensions "240,0"
 	isTouchEnabled true
 	isDragEnabled true
-	
+
 	screenEffects ScreenEffects'screenEffects'
     consoleHost DisplayObjectContainer'screenEffects_inner'
 	valueControls ValueControls'valueControls'
@@ -14,8 +14,6 @@ object AppStage theStage {
 
 	children [
 		object ScreenEffects screenEffects {
-			scale 2
-
 			inheritParentFrame true
 
 			inner DisplayObjectContainer'$^_inner'
@@ -60,8 +58,8 @@ object AppStage theStage {
                     barrelDistortion = 0.3 ,
 				} EOF
 			}
-			
-			children [				
+
+			children [
 				object DisplayObjectContainer $^_inner {
 					inheritParentFrame true
 
@@ -76,7 +74,7 @@ object AppStage theStage {
 						} EOF
 					}
 				}
-				
+
 				object Sprite $^_overlay {
 					texture Texture'tv_overlay'
 					blendMode Multiply
@@ -87,11 +85,9 @@ object AppStage theStage {
 
 		object UIPopup virtualControlsGuide {
 
-			startHidden false
+			startHidden true
 			isTouchEnabled false
 			color 40404040
-//			visibleWhenHidden true
-//			hiddenColor 30303030
 			defaultShowDuration 3.0
 			defaultHideDuration 1.0
 
@@ -99,7 +95,7 @@ object AppStage theStage {
 				object Sprite $^_frame {
 					texture Texture'virtual_controls_guide'
 				}
-				
+
 				object UIPopup $^_handPopup {
 					startHidden false
 					defaultShowDuration 0.5
@@ -165,14 +161,14 @@ object AppStage theStage {
 				}
 			]
 		}
-		
+
 		object ValueControls valueControls {
 			visible false
 			ignoreFrameAttachment false
 			parentFrameAttachPoint 1, -1
 			position -40,10
 		}
-		
+
 		object DefaultText $^_fpsDisplay {
 			visible false
 			ignoreFrameAttachment false
