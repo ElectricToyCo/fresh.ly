@@ -76,6 +76,7 @@ object AppStage theStage {
 				}
 
 				object Sprite $^_overlay {
+                    visible false
 					texture Texture'tv_overlay'
 					blendMode Multiply
 					scale 0.625, -0.46875
