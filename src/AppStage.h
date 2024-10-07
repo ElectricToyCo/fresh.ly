@@ -59,6 +59,7 @@ namespace fin
 		VAR( fr::ValueControls::ptr, m_valueControls );
 		VAR( fr::Sprite::ptr, m_tvOverlay );
 		VAR( fr::UIPopup::ptr, m_virtualControlsGuide );
+        DVAR( bool, m_supportGIFCapturing, false );
 
 		fr::FantasyConsole::ptr m_pendingActivate;
         bool m_pendingReload = false;

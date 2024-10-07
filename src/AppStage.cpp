@@ -71,6 +71,7 @@ namespace fin
 	DEFINE_VAR( AppStage, fr::ValueControls::ptr, m_valueControls );
 	DEFINE_VAR( AppStage, fr::Sprite::ptr, m_tvOverlay );
 	DEFINE_VAR( AppStage, fr::UIPopup::ptr, m_virtualControlsGuide );
+    DEFINE_VAR( AppStage, bool, m_supportGIFCapturing );
 	FRESH_IMPLEMENT_STANDARD_CONSTRUCTORS( AppStage )
 
 	void AppStage::onAllLoaded()
@@ -279,7 +280,7 @@ namespace fin
 	{
 #if !GL_ES_VERSION_2_0
 		// Accumulate a record of screen pixels.
-		if( m_activeConsole == m_game && m_game->texture() )
+		if( m_supportGIFCapturing && m_activeConsole == m_game && m_game->texture() )
 		{
 			auto texels = m_game->texture()->readTexels();
 			const auto dims = m_game->texture()->dimensions();
@@ -303,7 +304,7 @@ namespace fin
 		}
 #endif // !GL_ES_VERSION_2_0
 
-		if( m_pendingTakeScreenshot	 )
+		if( m_pendingTakeScreenshot	)
 		{
 			m_pendingTakeScreenshot = false;
 			if( m_pastScreenshots.empty() == false && m_screenshotsDims.x > 0 && m_screenshotsDims.y > 0 )
